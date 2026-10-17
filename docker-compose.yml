@@ -1,0 +1,24 @@
+services:
+  exercise-api:
+    build:
+      context: .
+      dockerfile: services/exercise-api/Dockerfile
+    environment:
+      PORT: 3000
+      EXERCISE_DB_PATH: /app/data/exercises.sqlite
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./services/exercise-api/src/db:/app/data:ro
+
+  exercise-web:
+    build:
+      context: .
+      dockerfile: services/exercise-web/Dockerfile
+    environment:
+      VITE_API_BASE_URL: http://localhost:3000
+    ports:
+      - "5173:5173"
+    depends_on:
+      - exercise-api

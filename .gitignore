@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+*.log
+services/exercise-api/src/db/*.sqlite
+services/exercise-api/src/db/*.sqlite-*

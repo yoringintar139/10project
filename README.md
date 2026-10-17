@@ -136,3 +136,23 @@
 1. 개발 기간: 한달(일주일 2시간, 총 8시간) — 기능 범위가 큰 경우 일정 리스크 있음, MVP 범위 축소 고려 필요
 2. 리스크: 추천 로직의 정확도 검증 시간 부족 가능성 → 초기에는 단순 규칙 기반으로 범위를 좁혀 개발
 
+---
+
+## 로컬 실행
+
+Node.js 24 이상이 필요합니다. 저장소 루트에서 의존성을 설치하고 운동 카탈로그를 준비합니다.
+
+```bash
+npm install
+npm run catalog:init --workspace=@fitmotion/exercise-api
+```
+
+API와 웹 앱은 각각 별도 터미널에서 실행합니다.
+
+```bash
+npm run dev --workspace=@fitmotion/exercise-api
+npm run dev --workspace=@fitmotion/exercise-web
+```
+
+웹 앱은 Vite가 출력하는 로컬 주소에서 열고, API는 `http://localhost:3000`에서 실행됩니다. `npm run build`와 `npm test`는 전체 workspace를 검증합니다. 개인 운동 프로필은 브라우저 메모리에서만 사용되며 API와 SQLite 카탈로그에는 저장되지 않습니다.
+
